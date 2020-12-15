@@ -1,9 +1,8 @@
-// STYLE DE BASE DE TOUS LES LIENS ET BOUTON DU SITE
+
 
 a{
   &:link{
     color: var(--color-link);
-    text-decoration: none;
   }
 
   &:visited{
@@ -12,7 +11,6 @@ a{
 
   &:hover{
     color: var(--color-link-hover);
-    text-decoration: underline;
   }
 
   &:active{

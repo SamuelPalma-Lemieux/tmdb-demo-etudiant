@@ -1,9 +1,8 @@
-//FICHIER DE CONFIGURATION POUR LES VARIABLES DE LARGEUR/HAUTEUR
 
 :root{
-  // Dimension maximal
-  --max-width: 1200px;
-  --min-width: 335px;
+
+  --max-width: 1440px;
+  --min-width: 375px;
 
   --padding-thin: 10px;
   --padding-large: 20px;
@@ -14,12 +13,11 @@
 }
 
 
-// MEDIA QUERIES BREAKPOINTS
-$vw-thin: 320px;
-$vw-small: 576px;
+//  BREAKPOINTS
+
+$vw-small: 375px;
 $vw-medium: 768px;
-$vw-large: 1000px;
-$vw-huge: 1200px;
+$vw-huge: 1440px;
 
 
 

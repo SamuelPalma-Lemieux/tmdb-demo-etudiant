@@ -3,7 +3,6 @@
 
 // TOOLS
 // mixins et fonctions utilisés globalement dans le SCSS (Sass)
-@import "tools/functions";
 
 
 
@@ -27,7 +26,6 @@
 // Modification des styles généraux de la page. Ce sont les styles qui seront généralement hérités par les éléments de la page.
 @import "elements/body";
 @import "elements/headings";
-@import "elements/hr";
 @import "elements/images";
 @import "elements/links";
 @import "elements/wrapper";
@@ -51,6 +49,4 @@
 
 // UTILITIES
 // Utilitaires et classes auxiliaires avec possibilité de remplacer tout ce qui précède, par exemple masquer les éléments de la page
-@import "utilities/spacing";
-@import "utilities/hide";
 

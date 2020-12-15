@@ -1,25 +1,24 @@
-//FICHIER DE CONFIGURATION POUR LES VARIABLES DE POLICE
+
 
 :root{
-  /// Grosseur des textes
-
-  --fz-normal: rem(18);//1.125rem;  //18px
-
-  /// Grosseur des titres
-
-  --fz-h1: rem(60);//8.75rem; //140px
-  --fz-h2: rem(22);  //40px
-  --fz-h3: rem(20); //36px
-  --fz-h4: rem(18); //68px
 
 
-  /// Font family
+  --fz-normal: rem 2;
 
-  --ff-normal: 'Prompt', sans-serif;
-  --ff-title-primary: 'Anton', sans-serif;
-  --ff-title-secondary: 'Sansita Swashed', cursive;
 
-  /// Hauteur de ligne
+  --fz-h1: rem 2;
+  --fz-h2: rem 2;
+  --fz-h3: rem 2;
+  --fz-h4: rem 2;
+
+
+
+
+  --ff-normal: sans-serif;
+  --ff-title-primary:sans-serif;
+  --ff-title-secondary: sans-serif;
+
+
   --lh-extra-thin: 1;
   --lh-thin: 1.2;
   --lh-normal: 1.5;
@@ -29,7 +28,7 @@
 
 
 
-  /// Fonts weight
+
   --fw-thin: 100;
   --fw-extra-light: 200;
   --fw-light: 300;
@@ -41,45 +40,4 @@
   --fw-black: 900;
 
 }
-
-/// Grosseur des textes
-//
-//$fz-normal: rem(16);
-//
-//
-///// Grosseur des titres
-//
-//$fz-h1: rem(36);
-//$fz-h2: rem(32);
-//$fz-h3: rem(22);
-//$fz-h4: rem(20);
-//$fz-h5: rem(18);
-//$fz-h6: rem(16);
-//
-///// Hauteur de ligne
-//$lh-extra-thin: 1;
-//$lh-thin: 1.2;
-//$lh-normal: 1.5;
-//$lh-medium: 1.8;
-//$lh-large: 2;
-//$lh-extra-large: 2.4;
-//
-//
-///// Font family
-//
-//$ff-normal: 'Roboto', Helvetica, Arial, sans-serif;
-//$ff-title: 'Roboto', Helvetica, Arial, sans-serif;
-//
-///// Fonts weight
-//$fw-thin: 100;
-//$fw-extra-light: 200;
-//$fw-light: 300;
-//$fw-regular: 400;
-//$fw-medium: 500;
-//$fw-semibold: 600;
-//$fw-bold: 700;
-//$fw-extra-bold: 800;
-//$fw-black: 900;
-
-
 
