@@ -72,8 +72,6 @@ const optimiser_js = function() {
 
     return gulp.src(folder.src + 'js/**/*')         //Récupère tous les fichiers du dossier et des sous-dossiers.
         .pipe(sourcemaps.init())                    //Permets de retrouver la ligne problématique dans le fichier original.
-        //TODO enlever le commentaire de stripdebug avant de mettre en ligne
-        // .pipe(stripdebug())                         //Supprime tous les commentaires et les lignes de « débogage »
         .pipe(sourcemaps.write())                   //Permets de retrouver la ligne problématique dans le fichier original.
         .pipe(gulp.dest(out + 'js/'));              //Copie tous les fichiers optimisés vers la destination.
 };
