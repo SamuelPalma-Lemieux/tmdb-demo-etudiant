@@ -1,16 +1,14 @@
-
-
-.swiper-container {
+.swiper-container, .swiper-container2{
   width: 100%;
-  height: 452px;
-  display: flex;
-  flex-direction: column;
+  height: 100%;
 }
 
-.swiper-slide {
+.swiper-slide, .swiper-slide2{
   text-align: center;
   font-size: 18px;
   background: #fff;
+  display: flex;
+  flex-direction: column;
 
   /* Center slide text vertically */
   display: -webkit-box;
@@ -27,5 +25,19 @@
   align-items: center;
 }
 
+.new{
+  display: flex;
+  justify-content:center;
+  background: var(--color-bg-secondary);
+}
+.wrapper-slid{
+  background: var(--color-bg-secondary);
+
+}
+.swiper-slide{
+  display: flex;
+  background: var(--color-bg-secondary);
+
+}
 
 

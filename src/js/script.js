@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         connexion.requeteInfoFilm(params.get("id"));
     } else {
         connexion.requeteDernierFilm();
+        connexion.requetePopulaireFilm();
     }
 
 
@@ -27,6 +28,7 @@ class MovieDB {
         this.imgPath = "https://image.tmdb.org/t/p/";
         this.largeurAffiche = ["92", "154", "185", "342", "500", "780"]
         this.nbFilm = 6;
+        this.nbPopulaire = 9;
 
 
     }
@@ -62,7 +64,7 @@ class MovieDB {
             }
             article.querySelector('.description').innerHTML = data[i].overview || "Aucne description disponible";
             article.querySelector("a").href += "fiche-film.html?id=" + data[i].id;
-            article.querySelector('.cote').innerHTML = data[i].cote;
+            // article.querySelector('.cote').innerHTML = data[i].cote;
             let image = article.querySelector('img');
             image.src = this.imgPath + "w300" + data[i].poster_path;
             console.log(article)
@@ -108,35 +110,127 @@ class MovieDB {
         document.querySelector(".revenu").innerHTML = "Les revenues du film sont de " + data.revenue + "$.";
 
 
-
         uneImage.setAttribute("src", this.imgPath + "w" + this.largeurAffiche[3] + data.poster_path);
 
 
     }
 
 
+    requetePopulaireFilm() {
+        let requete = new XMLHttpRequest();
+        requete.addEventListener("loadend", this.retourPopulaireFilm.bind(this));
+        requete.open('GET', this.baseUrl + 'movie/popular?api_key=' + this.apiKey + '&language=' + this.lang + '&page=1')
+        requete.send();
+    }
+
+    retourPopulaireFilm(event) {
+
+        console.log('retourDernierFilm');
+        let target = event.currentTarget;
+        let data = JSON.parse(target.responseText).results;
+        this.afficherPopulaireFilm(data);
+    }
+
+    afficherPopulaireFilm(data) {
+        console.log('afficherDernierFilm');
+        let section = document.querySelector('.swiper-wrapper');
+        console.log(section);
+        for (let i = 0; i < this.nbPopulaire; i++) {
+
+            let article = document.querySelector('.template .swiper-slide').cloneNode(true);
+            article.querySelector('h3').innerHTML = data[i].title;
+
+            // if (data[i].overview != "") {
+            //     article.querySelector('.description').innerHTML = data[i].overview;
+            // } else {
+            //     article.querySelector('.description').innerHTML = "Aucune description disponible";
+            // }
+            // article.querySelector('.description').innerHTML = data[i].overview || "Aucne description disponible";
+            article.querySelector("a").href += "fiche-film.html?id=" + data[i].id;
+            article.querySelector('.cote').innerHTML = "Ce film est noté " + data[i].vote_average + " /10.";
+            let image = article.querySelector('img');
+            image.src = this.imgPath + "w300" + data[i].poster_path;
+            console.log(article)
+            section.appendChild(article)
+
+        }
+        var swiper = new Swiper('.swiper-container', {
+            loop: true,
+                breakpoints: {
+                    376: {
+                        slidesPerView: 1,
+                        spaceBetweenSlides: 30
+                    },
+                    // when window width is <= 376px
+                    769: {
+                        slidesPerView: 3,
+                        spaceBetweenSlides: 30
+                    },
+                    // when window width is <= 769px
+                    1440: {
+                        slidesPerView: 5,
+                        spaceBetweenSlides: 40
+                    }
+                },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    }
+
+
+
+
+    requeteActeurFilm() {
+        let requete = new XMLHttpRequest();
+        requete.addEventListener("loadend", this.retourActeurFilm.bind(this));
+        requete.open('GET', this.baseUrl + 'movie/popular?api_key=' + this.apiKey + '&language=' + this.lang + '&page=1')
+        requete.send();
+    }
+
+    retourActeurFilm(event) {
+
+
+        let target = event.currentTarget;
+        let data = JSON.parse(target.responseText).results;
+        this.afficherActeurFilm(data);
+    }
+
+    afficherActeurFilm(data) {
+        console.log('afficherActeurFilm');
+        let section = document.querySelector('.swiper-wrapper');
+        console.log(section);
+        for (let i = 0; i < this.nbPopulaire; i++) {
+
+            let article = document.querySelector('.template .swiper-slide').cloneNode(true);
+            article.querySelector('h3').innerHTML = data[i].title;
+
+            // if (data[i].overview != "") {
+            //     article.querySelector('.description').innerHTML = data[i].overview;
+            // } else {
+            //     article.querySelector('.description').innerHTML = "Aucune description disponible";
+            // }
+            // article.querySelector('.description').innerHTML = data[i].overview || "Aucne description disponible";
+            article.querySelector("a").href += "fiche-film.html?id=" + data[i].id;
+            article.querySelector('.cote').innerHTML = "Ce film est noté " + data[i].vote_average + " /10.";
+            let image = article.querySelector('img');
+            image.src = this.imgPath + "w300" + data[i].poster_path;
+            console.log(article)
+            section.appendChild(article)
+
+        }
+        var swiper2 = new Swiper('.swiper-container2', {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination2',
+                clickable: true,
+            },
+        });
+    }
 
 
 }
 
-// var mySwiper = new Swiper('.swiper-container', {
-//     // Optional parameters
-//     direction: 'vertical',
-//     loop: true,
-//
-//     // If we need pagination
-//     pagination: {
-//         el: '.swiper-pagination',
-//     },
-//
-//     // Navigation arrows
-//     navigation: {
-//         nextEl: '.swiper-button-next',
-//         prevEl: '.swiper-button-prev',
-//     },
-//
-//     // And if we need scrollbar
-//     scrollbar: {
-//         el: '.swiper-scrollbar',
-//     },
-// })
