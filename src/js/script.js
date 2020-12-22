@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
 
     // function clickMenu() {
@@ -128,7 +127,8 @@ class MovieDB {
         document.querySelector(".revenu").innerHTML = "Les revenus du film sont de " + data.revenue + "$.";
 
 
-        uneImage.setAttribute("src", this.imgPath + "w" + this.largeurAffiche[3] + data.poster_path);
+        uneImage.setAttribute("src", this.imgPath + "w" + this.largeurAffiche[3] + data.backdrop_path);
+        this.requeteActeurFilm(data.id);
 
 
     }
@@ -164,7 +164,7 @@ class MovieDB {
             //     article.querySelector('.description').innerHTML = "Aucune description disponible";
             // }
             // article.querySelector('.description').innerHTML = data[i].overview || "Aucne description disponible";
-            article.querySelector("a").href += "fiche-film.html?id=" + data[i].id;
+             article.querySelector("a").href += "fiche-film.html?id=" + data[i].id;
             article.querySelector('.cote').innerHTML = "Ce film est noté " + data[i].vote_average + " /10.";
             let image = article.querySelector('img');
             image.src = this.imgPath + "w300" + data[i].poster_path;
@@ -175,22 +175,22 @@ class MovieDB {
         var swiper = new Swiper('.swiper-container', {
             spaceBetween: 30,
             loop: true,
-                breakpoints: {
-                    // when window width is <= 376px
-                    376: {
-                        slidesPerView: 1,
-                        spaceBetweenSlides: 30
-                    },
-                    // when window width is <= 769px
-                    769: {
-                        slidesPerView: 3,
-                        spaceBetweenSlides: 40
-                    },
-                    1440: {
-                        slidesPerView: 5,
-                        spaceBetweenSlides: 40
-                    }
+            breakpoints: {
+                // when window width is <= 376px
+                376: {
+                    slidesPerView: 1,
+                    spaceBetweenSlides: 30
                 },
+                // when window width is <= 769px
+                769: {
+                    slidesPerView: 3,
+                    spaceBetweenSlides: 40
+                },
+                1440: {
+                    slidesPerView: 5,
+                    spaceBetweenSlides: 40
+                }
+            },
 
             pagination: {
                 el: '.swiper-pagination',
@@ -200,12 +200,10 @@ class MovieDB {
     }
 
 
-
-
-    requeteActeurFilm() {
+    requeteActeurFilm(movieId) {
         let requete = new XMLHttpRequest();
         requete.addEventListener("loadend", this.retourActeurFilm.bind(this));
-        requete.open('GET', this.baseUrl + '/credits?api_key=' + this.apiKey + '&language=' + this.lang + '&page=1')
+        requete.open('GET', this.baseUrl + 'movie/' + movieId + '/credits?api_key=' + this.apiKey + '&language=' + this.lang)
         requete.send();
     }
 
@@ -213,18 +211,17 @@ class MovieDB {
 
 
         let target = event.currentTarget;
-        let data = JSON.parse(target.responseText).results;
+        let data = JSON.parse(target.responseText).cast;
         this.afficherActeurFilm(data);
     }
 
     afficherActeurFilm(data) {
         console.log('afficherActeurFilm');
-        let section = document.querySelector('.swiper-wrapper');
-        console.log(section);
+
         for (let i = 0; i < data.length; i++) {
 
             let article = document.querySelector('.template>.swiper-slide').cloneNode(true);
-            article.querySelector('h3').innerHTML = data[i].title;
+            article.querySelector('h4').innerHTML = data[i].title;
 
             // if (data[i].overview != "") {
             //     article.querySelector('.description').innerHTML = data[i].overview;
@@ -232,12 +229,10 @@ class MovieDB {
             //     article.querySelector('.description').innerHTML = "Aucune description disponible";
             // }
             // article.querySelector('.description').innerHTML = data[i].overview || "Aucne description disponible";
-            article.querySelector("a").href += "fiche-film.html?id=" + data[i].id;
-            article.querySelector('.cote').innerHTML = "Ce film est noté " + data[i].vote_average + " /10.";
+            // article.querySelector("a").href += "fiche-film.html?id=" + data[i].id;
+            article.querySelector('.acteur').innerHTML = data[i].name;
             let image = article.querySelector('img');
-            image.src = this.imgPath + "w300" + data[i].poster_path;
-            console.log(article)
-            section.appendChild(article)
+            image.src = this.imgPath + "w342" + data[i].profile_path;
             document.querySelector(".swiper-wrapper").appendChild(article);
         }
         var swiper = new Swiper('.swiper-container', {
