@@ -1,4 +1,33 @@
-document.addEventListener("DOMContentLoaded", function () {
+
+//document.addEventListener("DOMContentLoaded", function (event) {
+
+//
+// var hamburgers = document.querySelectorAll(".hamburger");
+// var menuMobile = document.querySelector(".navigatio-Mobile");
+// for (let i = 0; i < hamburgers.length; i++) {
+//     var hamburger = hamburgers[i];
+//     hamburger.addEventListener("click", openMenu);
+// }
+// function openMenu(evt) {
+//     evt.preventDefault();
+//     var cible = evt.currentTarget;
+//
+//     if (cible.classList.contains("open")) {
+//         menuMobile.classList.remove("open");
+//         cible.classList.remove("open");
+//     } else {
+//         menuMobile.classList.add("open");
+//         cible.classList.add("open");
+//     }
+// }
+// });
+
+
+
+document.addEventListener("DOMContentLoaded", function (event) {
+
+
+
 
     const btnScrollTOTop = document.querySelector("#btnScrolltoTop");
     btnScrollTOTop.addEventListener("click",function () {
@@ -10,18 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     })
 
-    // function clickMenu() {
-    //     if (document.querySelector("ul.menu li").style.display === "none") {
-    //         document.querySelectorAll("ul.menu li").forEach(e => e.stgulpyle.display = "block");
-    //     } else {
-    //         document.querySelectorAll("ul.menu li").forEach(e => e.style.display = "none");
-    //     }
-    // }
 
-//     document.getElementById("menu-btn").addEventListener("click", clickMenu);
-//
-//
-// });
 
 
     let connexion = new MovieDB();

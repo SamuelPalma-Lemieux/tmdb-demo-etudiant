@@ -1,9 +1,28 @@
-//.hamburger{
-//  cursor: pointer;
-//}
-//button .hamburger .hamburger-simple{
-//  .material-icons{
-//    font-size: 8rem;
-//    color: tomato;
-//  }
-//}
+.menu-hamburger {
+  cursor: pointer;
+
+}
+
+.hamburger {
+
+  .material-icons {
+    font-size: 8rem;
+    color: var(--color-text-primary);
+  }
+
+  .icon-close {
+    display: none;
+  }
+
+  &.open {
+    .icon-close {
+      display: block;
+    }
+
+    .icon-open {
+      display: none;
+    }
+  }
+
+
+}
