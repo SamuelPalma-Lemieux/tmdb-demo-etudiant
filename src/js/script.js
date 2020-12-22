@@ -1,5 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    const btnScrollTOTop = document.querySelector("#btnScrolltoTop");
+    btnScrollTOTop.addEventListener("click",function () {
+        //$("html,body").animate({scrollTop:0}, "slow");
+        window.scrollTo({
+            top: 0,
+            left:0,
+            behavior:"smooth"
+        });
+    })
+
     // function clickMenu() {
     //     if (document.querySelector("ul.menu li").style.display === "none") {
     //         document.querySelectorAll("ul.menu li").forEach(e => e.stgulpyle.display = "block");
@@ -264,4 +274,3 @@ class MovieDB {
 
 
 }
-
