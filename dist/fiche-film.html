@@ -3,16 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>TIMflix</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/main.css">
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 
 
 </head>
 <body>
+</head>
+<body>
+
+
+<header>
+    <nav>
+        <div class="wrapper">
+            <a href=""><img src="images/logo timflix.png"/> </a>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Populaire</a></li>
+                <li><a href="#">Nouveau</a></li>
+                <li>
+                    <button>S'inscrire</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!--        <nav class="primary-mobile">-->
+    <!--            <ul>-->
+    <!--                <li><a href="#" class="menu-logo"> <h1 class="logo">-->
+    <!--                    <span class="logo"> <img src="images/logo timflix.png"/> </span>-->
+    <!--                </h1></a></li>-->
+    <!--                <li>-->
+    <!--                    <button class="hamburger hamburger-simple">-->
+    <!--                        <span class="material-icons icon-open">menu</span>-->
+    <!--                        <span class="material-icons icon-close">close</span>-->
+    <!--                    </button>-->
+    <!--                </li>-->
+    <!--            </ul>-->
+    <!--            <nav class="mobile-modal">-->
+    <!--                <ul>-->
+    <!--                    <li><a href="#"><span>Accueil</span></a></li>-->
+    <!--                    <li><a href="#"><span>Populaire</span></a></li>-->
+    <!--                    <li><a href="#"><span>À l'affiche</span></a></li>-->
+    <!--                </ul>-->
+    <!--            </nav>-->
+    <!--        </nav>-->
+</header>
 
 <article class="fiche-film">
     <h2>Titre du film </h2>
@@ -31,9 +75,9 @@
 </article>
 <div class="wrapper">
     <!-- Slider main container -->
-    <div class="swiper-container2">
+    <div class="swiper-container">
         <!-- Additional required wrapper -->
-        <div class="swiper-wrapper2">
+        <div class="swiper-wrapper">
 
 
         </div>
@@ -42,16 +86,27 @@
 
 <div class="template">
 
-    <div class="swiper-slide2">
+    <div class="swiper-slide">
 
         <a href="" class="swip">
             <img src="" alt="Texte de l'image ">
             <h3>Titre du film </h3>
             <p class="cote"></p>
-            <a href="">Voir plus d'information</a>
         </a>
     </div>
 </div>
+</div>
+
+<footer>
+    <img src="images/tmdb.svg" alt="Logo the movie data base">
+    <h2>Samuel Palma-Lemieux</h2>
+    <div class="icon">
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-youtube"></a>
+    </div>
+    <button>Revenir en haut</button>
+</footer>
 
 </body>
 </html>

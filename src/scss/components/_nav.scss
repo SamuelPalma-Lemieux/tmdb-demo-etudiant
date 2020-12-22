@@ -20,18 +20,39 @@ font-size: var(--fz-normal);
   }
   ul{
     display: flex;
-    justify-content: space-evenly ;
+    justify-content: center ;
     width: 100%;
-
+    padding:0;
 
     li{
-margin-right: 10px;
+margin:10px;
       list-style-type: none;
 
     }
   }
 }
 
+
+@media screen and (min-width: $vw-medium){
+  nav{
+  ul{
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    li{
+      font-size: var(--fz-big);
+
+      a{
+        font-size:var(--fz-big);
+
+      }
+    }
+  }
+}
+
+}
 //.primary{
 //  display: none;
 //

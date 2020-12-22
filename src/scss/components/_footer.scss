@@ -1,0 +1,45 @@
+footer{
+  background: var(--color-bg-quaternary);
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  img{
+    width: 385px;
+    height: 50px;
+  }
+  a:hover{
+    color:red;
+
+  }
+
+
+}
+.icon{
+  margin:20px;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+@media screen and (min-width: $vw-huge) {
+  footer{
+    flex-direction: row;
+    font-size:2.5rem;
+    h2{
+      font-size:2.5rem;
+
+    }
+
+
+    img{
+      margin-right: 20px;
+    }
+.icon{
+  justify-content: space-around;
+  width: 30%;
+}
+  }
+}

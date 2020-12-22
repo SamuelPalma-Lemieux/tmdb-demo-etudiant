@@ -1,4 +1,18 @@
+
 document.addEventListener("DOMContentLoaded", function () {
+
+    // function clickMenu() {
+    //     if (document.querySelector("ul.menu li").style.display === "none") {
+    //         document.querySelectorAll("ul.menu li").forEach(e => e.stgulpyle.display = "block");
+    //     } else {
+    //         document.querySelectorAll("ul.menu li").forEach(e => e.style.display = "none");
+    //     }
+    // }
+
+//     document.getElementById("menu-btn").addEventListener("click", clickMenu);
+//
+//
+// });
 
 
     let connexion = new MovieDB();
@@ -7,9 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let params = (new URL(document.location)).searchParams;
         console.log(params);
         connexion.requeteInfoFilm(params.get("id"));
+        connexion.requeteActeurFilm(params.get("id"));
     } else {
         connexion.requeteDernierFilm();
         connexion.requetePopulaireFilm();
+
     }
 
 
@@ -56,13 +72,15 @@ class MovieDB {
 
             let article = document.querySelector('.template .film').cloneNode(true);
             article.querySelector('h2').innerHTML = data[i].title;
-
-            if (data[i].overview != "") {
-                article.querySelector('.description').innerHTML = data[i].overview;
-            } else {
-                article.querySelector('.description').innerHTML = "Aucune description disponible";
-            }
-            article.querySelector('.description').innerHTML = data[i].overview || "Aucne description disponible";
+            //
+            // if (data[i].overview != "") {
+            //     article.querySelector('.description').innerHTML = data[i].overview;
+            // } else {
+            //     article.querySelector('.description').innerHTML = "Aucune description disponible";
+            // }
+            // article.querySelector('.description').innerHTML = data[i].overview || "Aucne description disponible";
+            article.querySelector(".anneedesortie").innerHTML = "Sortie le " + data[i].release_date;
+            article.querySelector(".note").innerHTML = "Ce film est noté " + data[i].vote_average + " /10.";
             article.querySelector("a").href += "fiche-film.html?id=" + data[i].id;
             // article.querySelector('.cote').innerHTML = data[i].cote;
             let image = article.querySelector('img');
@@ -107,7 +125,7 @@ class MovieDB {
         document.querySelector(".language-original").innerHTML = "La langue original de ce film est " + "{" + data.original_language + "}.";
         document.querySelector(".duree").innerHTML = "La durée du film est de " + data.runtime + " minutes.";
         document.querySelector(".budget").innerHTML = "Le budget du film est de " + data.budget + "$.";
-        document.querySelector(".revenu").innerHTML = "Les revenues du film sont de " + data.revenue + "$.";
+        document.querySelector(".revenu").innerHTML = "Les revenus du film sont de " + data.revenue + "$.";
 
 
         uneImage.setAttribute("src", this.imgPath + "w" + this.largeurAffiche[3] + data.poster_path);
@@ -155,23 +173,25 @@ class MovieDB {
 
         }
         var swiper = new Swiper('.swiper-container', {
+            spaceBetween: 30,
             loop: true,
                 breakpoints: {
+                    // when window width is <= 376px
                     376: {
                         slidesPerView: 1,
                         spaceBetweenSlides: 30
                     },
-                    // when window width is <= 376px
+                    // when window width is <= 769px
                     769: {
                         slidesPerView: 3,
-                        spaceBetweenSlides: 30
+                        spaceBetweenSlides: 40
                     },
-                    // when window width is <= 769px
                     1440: {
                         slidesPerView: 5,
                         spaceBetweenSlides: 40
                     }
                 },
+
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
@@ -185,7 +205,7 @@ class MovieDB {
     requeteActeurFilm() {
         let requete = new XMLHttpRequest();
         requete.addEventListener("loadend", this.retourActeurFilm.bind(this));
-        requete.open('GET', this.baseUrl + 'movie/popular?api_key=' + this.apiKey + '&language=' + this.lang + '&page=1')
+        requete.open('GET', this.baseUrl + '/credits?api_key=' + this.apiKey + '&language=' + this.lang + '&page=1')
         requete.send();
     }
 
@@ -201,9 +221,9 @@ class MovieDB {
         console.log('afficherActeurFilm');
         let section = document.querySelector('.swiper-wrapper');
         console.log(section);
-        for (let i = 0; i < this.nbPopulaire; i++) {
+        for (let i = 0; i < data.length; i++) {
 
-            let article = document.querySelector('.template .swiper-slide').cloneNode(true);
+            let article = document.querySelector('.template>.swiper-slide').cloneNode(true);
             article.querySelector('h3').innerHTML = data[i].title;
 
             // if (data[i].overview != "") {
@@ -218,14 +238,30 @@ class MovieDB {
             image.src = this.imgPath + "w300" + data[i].poster_path;
             console.log(article)
             section.appendChild(article)
-
+            document.querySelector(".swiper-wrapper").appendChild(article);
         }
-        var swiper2 = new Swiper('.swiper-container2', {
-            slidesPerView: 3,
+        var swiper = new Swiper('.swiper-container', {
             spaceBetween: 30,
             loop: true,
+            breakpoints: {
+                // when window width is <= 376px
+                376: {
+                    slidesPerView: 1,
+                    spaceBetweenSlides: 30
+                },
+                // when window width is <= 769px
+                769: {
+                    slidesPerView: 3,
+                    spaceBetweenSlides: 40
+                },
+                1440: {
+                    slidesPerView: 5,
+                    spaceBetweenSlides: 40
+                }
+            },
+
             pagination: {
-                el: '.swiper-pagination2',
+                el: '.swiper-pagination',
                 clickable: true,
             },
         });

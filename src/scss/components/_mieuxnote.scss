@@ -1,12 +1,14 @@
 .mieux_note {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
 
 
+}
 
-  .film{
-    width: 30%;
-  }
+
+.best {
+  display: flex;
+  justify-content: center;
 }

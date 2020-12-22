@@ -1,0 +1,52 @@
+.film {
+  background: var(--color-bg-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin-top: 80px;
+  margin-bottom: 40px;
+
+  img {
+    height: 300px;
+    width: 200px;
+  }
+  p{
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size:var(--fz-small);
+
+  }
+}
+
+
+
+
+
+@media screen and (min-width: $vw-medium){
+  .film{
+    width: 50%;
+    p{
+      font-size:var(--fz-small);
+    }
+
+    img{
+      height: 500px;
+      width: 350px ;
+    }
+  }
+}
+
+@media screen and (min-width: $vw-huge) {
+  .film {
+    width: 30%;
+
+
+    img{
+      height: 600px;
+      width: 400px ;
+    }
+  }
+}
